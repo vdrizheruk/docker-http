@@ -9,10 +9,9 @@ RUN apt-get install --no-install-recommends -y ca-certificates unzip python-soft
 # nginx + php
  php5-fpm php5-cli php5-dev php5-common \ 
  php5-mysql php5-curl php5-gd php5-mcrypt php5-sqlite php5-xmlrpc \ 
- php5-xsl php5-intl php-apc git mcrypt \ 
- python-setuptools procps mysql-client \ 
+ php5-xsl php5-intl php-apc git \ 
 # programs
- mc nano git htop wget lynx links curl procps mysql-client
+ mc nano git htop wget lynx links mcrypt curl procps mysql-client
 
 RUN php5enmod mcrypt
 
@@ -34,8 +33,8 @@ RUN mv composer.phar /usr/local/bin/composer.phar
 RUN ln -s /usr/local/bin/composer.phar /usr/local/bin/composer
 
 # Add nginx repo and install nginx
-#RUN add-apt-repository -y ppa:nginx/stable
-#RUN apt-get -q update
+RUN curl http://nginx.org/keys/nginx_signing.key | apt-key add -
+RUN echo "deb http://nginx.org/packages/mainline/ubuntu/ `lsb_release -cs` nginx\ndeb-src http://nginx.org/packages/mainline/ubuntu/ `lsb_release -cs` nginx" > /etc/apt/sources.list.d/nginx.list
 RUN apt-get -y install nginx
 
 # cleanup
