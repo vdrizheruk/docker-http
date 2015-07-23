@@ -9,7 +9,7 @@ RUN apt-get install --no-install-recommends -y ca-certificates unzip python-soft
 # nginx + php
  php5-fpm php5-cli php5-dev php5-common \ 
  php5-mysql php5-curl php5-gd php5-mcrypt php5-sqlite php5-xmlrpc \ 
- php5-xsl php5-intl php-apc git \ 
+ php5-xsl php5-intl php-apc php5-sqlite \ 
 # programs
  mc nano git htop wget lynx links mcrypt curl procps mysql-client
 
